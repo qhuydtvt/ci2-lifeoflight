@@ -1,5 +1,6 @@
 
 import bases.GameObject;
+import bases.events.EventManager;
 import bases.inputs.InputManager;
 import bases.uis.InputText;
 import bases.uis.StatScreen;

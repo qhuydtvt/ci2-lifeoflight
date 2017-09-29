@@ -27,6 +27,10 @@ public class EventManager {
         push(EventType.UI_MESSAGE, message);
     }
 
+    public static void pushUIMessageNewLine(String message) {
+        push(EventType.UI_MESSAGE, message + "\n");
+    }
+
     public static void pushHelpMessage() {
         pushUIMessage("Command not found, type ;#FF0000help; to get support");
     }
