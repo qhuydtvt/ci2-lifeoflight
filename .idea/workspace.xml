@@ -2,43 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98cb20a9-2ffd-4c2c-9b58-f80e8bba4f58" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/com_google_code_gson_gson_2_8_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/events/event_arc_0.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/events/event_arc_1.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/maps/map_lvl0.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/bases/uis/BaseWindow.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/events/Answer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/events/Story.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/events/Time.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/maps/Map.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/maps/MapRow.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/maps/Player.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ci-textgame-begin.iml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tk-textgame-starter.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameWindow.java" afterPath="$PROJECT_DIR$/src/GameWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Program.java" afterPath="$PROJECT_DIR$/src/Program.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bases/GameObject.java" afterPath="$PROJECT_DIR$/src/bases/GameObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bases/Utils.java" afterPath="$PROJECT_DIR$/src/bases/Utils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bases/Vector2D.java" afterPath="$PROJECT_DIR$/src/bases/Vector2D.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bases/events/EventListener.java" afterPath="$PROJECT_DIR$/src/bases/events/EventListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bases/events/EventManager.java" afterPath="$PROJECT_DIR$/src/bases/events/EventManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bases/events/EventType.java" afterPath="$PROJECT_DIR$/src/bases/events/EventType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bases/inputs/CommandListener.java" afterPath="$PROJECT_DIR$/src/bases/inputs/CommandListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bases/inputs/InputManager.java" afterPath="$PROJECT_DIR$/src/bases/inputs/InputManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bases/renderers/LineRenderer.java" afterPath="$PROJECT_DIR$/src/bases/renderers/LineRenderer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bases/renderers/Renderer.java" afterPath="$PROJECT_DIR$/src/bases/renderers/Renderer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bases/renderers/SolidRectRenderer.java" afterPath="$PROJECT_DIR$/src/bases/renderers/SolidRectRenderer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bases/renderers/WordsRenderer.java" afterPath="$PROJECT_DIR$/src/bases/renderers/WordsRenderer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bases/uis/GamePanel.java" afterPath="$PROJECT_DIR$/src/bases/uis/GamePanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bases/uis/InputText.java" afterPath="$PROJECT_DIR$/src/bases/uis/InputText.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bases/uis/StatScreen.java" afterPath="$PROJECT_DIR$/src/bases/uis/StatScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bases/uis/TextScreen.java" afterPath="$PROJECT_DIR$/src/bases/uis/TextScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bases/uis/TextView.java" afterPath="$PROJECT_DIR$/src/bases/uis/TextView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/settings/Settings.java" afterPath="$PROJECT_DIR$/src/settings/Settings.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -76,8 +41,8 @@
       <file leaf-file-name="Map.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/maps/Map.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="53" column="22" lean-forward="true" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
+            <state relative-caret-position="246">
+              <caret line="54" column="47" lean-forward="false" selection-start-line="54" selection-start-column="47" selection-end-line="54" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -610,11 +575,18 @@
       <option name="presentableId" value="Default" />
       <updated>1507514793445</updated>
     </task>
+    <task id="LOCAL-00001" summary="Session 4">
+      <created>1507539843962</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1507539843962</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1234" height="777" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -631,7 +603,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17423014" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17423014" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -648,6 +620,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Session 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="Session 4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -854,8 +830,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/maps/Map.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="53" column="22" lean-forward="true" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
+        <state relative-caret-position="246">
+          <caret line="54" column="47" lean-forward="false" selection-start-line="54" selection-start-column="47" selection-end-line="54" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
