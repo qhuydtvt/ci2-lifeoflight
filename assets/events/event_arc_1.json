@@ -1,0 +1,17 @@
+[
+    {
+        "message": "Message 1",
+        "time": {
+            "to": "E000002",
+            "value": "10s"
+        },
+        "ID": "E000001",
+        "type": "Timeout"
+    },
+    {
+        "message": "Gõ map để hiện bản đồ doanh trại",
+        "time": null,
+        "ID": "E000002",
+        "type": "Map"
+    }
+]

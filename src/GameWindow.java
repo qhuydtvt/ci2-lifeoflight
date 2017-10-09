@@ -1,127 +1,125 @@
-
-import bases.GameObject;
+import bases.Utils;
 import bases.events.EventManager;
+import bases.inputs.CommandListener;
 import bases.inputs.InputManager;
-import bases.uis.InputText;
-import bases.uis.StatScreen;
-import bases.uis.TextScreen;
-import settings.Settings;
+import bases.uis.BaseWindow;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import events.Answer;
+import events.Story;
+import maps.Map;
 
-import javax.swing.JFrame;
-import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.image.BufferedImage;
-
-import static java.lang.System.nanoTime;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by huynq on 7/28/17.
  */
-public class GameWindow extends JFrame {
+public class GameWindow extends BaseWindow {
 
-    private BufferedImage backBufferImage;
-    private Graphics2D backBufferGraphics;
-
-    private long lastTimeUpdate = -1;
-
-    public GameWindow() {
-        setupFont();
-        setupPanels();
-        setupWindow();
-    }
-
-    private void setupFont() {
-
-    }
-
-    private void setupPanels() {
-        TextScreen textScreenPanel = new TextScreen();
-        textScreenPanel.setColor(Color.BLACK);
-        textScreenPanel.getSize().set(
-                Settings.TEXT_SCREEN_SCREEN_WIDTH,
-                Settings.TEXT_SCREEN_SCREEN_HEIGHT);
-        pack();
-        textScreenPanel.getOffsetText().set(getInsets().left + 20, getInsets().top + 20);
-        GameObject.add(textScreenPanel);
-
-
-        InputText commandPanel = new InputText();
-        commandPanel.getPosition().set(
-                0,
-                Settings.SCREEN_HEIGHT
-        );
-        commandPanel.getOffsetText().set(20, 20);
-        commandPanel.getSize().set(
-                Settings.CMD_SCREEN_WIDTH,
-                Settings.CMD_SCREEN_HEIGHT
-        );
-        commandPanel.getAnchor().set(0, 1);
-        commandPanel.setColor(Color.BLACK);
-        GameObject.add(commandPanel);
-
-
-        StatScreen statsPanel = new StatScreen();
-        statsPanel.getPosition().set(
-                Settings.SCREEN_WIDTH,
-                0
-        );
-
-        statsPanel.getAnchor().set(1, 0);
-        statsPanel.setColor(Color.BLACK);
-        statsPanel.getSize().set(
-                Settings.STATS_SCREEN_WIDTH,
-                Settings.STATS_SCREEN_HEIGHT
-        );
-        GameObject.add(statsPanel);
-
-        InputManager.instance.addCommandListener(textScreenPanel);
-    }
-
-
-    private void setupWindow() {
-        this.setSize(Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT);
-        this.setVisible(true);
-        this.setTitle(Settings.GAME_TITLE);
-        this.addKeyListener(InputManager.instance);
-        this.setResizable(false);
-        this.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                System.exit(0);
-            }
-        });
-
-        backBufferImage = new BufferedImage(this.getWidth(),this.getHeight(), BufferedImage.TYPE_INT_ARGB);
-        backBufferGraphics = (Graphics2D) backBufferImage.getGraphics();
-    }
-
-    public void gameLoop() {
-        while(true) {
-            if (-1 == lastTimeUpdate) lastTimeUpdate = nanoTime();
-
-            long currentTime = nanoTime();
-
-            if(currentTime - lastTimeUpdate > 17000000) {
-                lastTimeUpdate = currentTime;
-                GameObject.runAll();
-                InputManager.instance.run();
-                render(backBufferGraphics);
-                repaint();
-            }
-        }
-    }
-
-    private void render(Graphics2D g2d) {
-        g2d.setFont(Settings.DEFAULT_FONT);
-        g2d.setColor(Color.BLACK);
-        g2d.fillRect(0, 0, Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT);
-
-        GameObject.renderAll(g2d);
-    }
+    HashMap<String, Story> storyMap;
+    Story currentStory;
+    int currentArc = 0;
+    int currentMapIndex = 0;
+    Map map;
 
     @Override
-    public void paint(Graphics g) {
-        g.drawImage(backBufferImage, 0, 0, null);
+    protected void startup() {
+        //1. Load arc
+        loadArc(0);
+
+        //2. Register command
+        InputManager.instance.addCommandListener(new CommandListener() {
+            @Override
+            public void onCommandFinished(String command) {
+                //0. Pushcommand
+                pushCommand(command);
+                //1. Check command type
+                if (currentStory.isType("input")) {
+                    Answer  answer = currentStory.checkAnswer(command);
+                    if (answer != null) {
+                        Story newStory = storyMap.get(answer.to);
+
+                        //2. Change story if neccessary
+                        if (newStory != null) {
+                            changeStory(newStory);
+                        }
+                    }
+                }
+                else if(currentStory.isType("timeout")) {
+                    if (command.equalsIgnoreCase("next"))
+                    {
+                        Story newStory = storyMap.get(currentStory.time.to);
+                        if (newStory != null) {
+                            changeStory(newStory);
+                        }
+                    }
+                }
+                else if (currentStory.isType("NextArc")) {
+                    EventManager.pushClearUI();
+                    currentArc++;
+                    loadArc(currentArc);
+                }
+                else if(currentStory.isType("map")) {
+                    if (map == null)
+                        loadMap(0);
+                    map.pushUI();
+                }
+            }
+
+            @Override
+            public void commandChanged(String command) {
+
+            }
+        });
+    }
+
+    private void loadMap(int mapIndex) {
+        String url  = String.format("assets/maps/map_lvl0.txt", mapIndex);
+        String content = Utils.loadFileContent(url);
+        map = new Map(content);
+        System.out.println(map);
+    }
+
+    private void pushCommand(String command) {
+        EventManager.pushUIMessageNewLine("");
+        EventManager.pushUIMessageNewLine(String.format(";#00FF00%s;", command));
+        EventManager.pushUIMessageNewLine("");
+    }
+
+    private void loadArc(int arcNo) {
+        //1 . Re-create map
+        storyMap = new HashMap<>();
+
+        //2. Load and parse JSON
+        String arcContent = Utils.loadFileContent(String.format("assets/events/event_arc_%s.json", arcNo));
+        TypeToken<List<Story>> typeToken = new TypeToken<List<Story>>(){};
+        List<Story> stories = new Gson().fromJson(arcContent, typeToken.getType());
+
+        //3 . Dump data into map
+
+        for (Story story: stories) {
+            if (storyMap.containsKey(story.ID)) {
+                System.out.println(String.format("Duplicate ID %s", story.ID));
+            } else {
+                storyMap.put(story.ID, story);
+            }
+        }
+
+        //4. Load first story
+        changeStory(stories.get(0));
+
+    }
+
+    private void changeStory(Story story) {
+        currentStory = story;
+        EventManager.pushUIMessageNewLine(currentStory.message);
+        if (currentStory.isType("timeout")) {
+            EventManager.pushUIMessageNewLine("Gõ ;#FF0000next; để tiếp tục");
+        }
+        else if(currentStory.isType("nextarc")) {
+            EventManager.pushUIMessageNewLine("Chúc mừng bạn đã kết thúc chuyển phiêu lưu, gõ lệnh bất kỳ để bắt đầu một cuộc phiêu lưu mới");
+        }
+
     }
 }
